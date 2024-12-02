@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arun.arm.challenge.components.ArmChallengeComponent;
+import com.arun.arm.challenge.service.ArmChallengeService;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @RestController
@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class BoardsController {
 
 	@Autowired
-	private ArmChallengeComponent armChallengeComponent;
+	private ArmChallengeService armChallengeComponent;
 
 	@PostMapping
 	public ObjectNode getBoardsFromDirectory(@RequestParam("directory") String directoryPath) {

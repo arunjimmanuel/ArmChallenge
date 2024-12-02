@@ -7,7 +7,7 @@ import org.springframework.boot.DefaultApplicationArguments;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.arun.arm.challenge.components.ArmChallengeComponent;
+import com.arun.arm.challenge.service.ArmChallengeService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -25,7 +25,7 @@ public class ArmChallengeApplication {
 
         if ("cli".equalsIgnoreCase(mode)) {
             logger.info("Running in CLI mode...");
-            ObjectNode returnJson = new ArmChallengeComponent().run(arguments);
+            ObjectNode returnJson = new ArmChallengeService().run(arguments);
             if(returnJson != null) {
             	 ObjectMapper objectMapper = new ObjectMapper();
             	try {

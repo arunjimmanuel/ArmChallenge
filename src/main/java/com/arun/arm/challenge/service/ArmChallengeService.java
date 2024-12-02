@@ -1,4 +1,4 @@
-package com.arun.arm.challenge.components;
+package com.arun.arm.challenge.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,9 +19,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 @Service
-public class ArmChallengeComponent {
+public class ArmChallengeService {
 
-	private static final Logger logger = LoggerFactory.getLogger(ArmChallengeComponent.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArmChallengeService.class);
 
 	public ObjectNode run(ApplicationArguments args) {
 		if (!args.containsOption("directory")) {
