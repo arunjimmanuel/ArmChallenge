@@ -1,5 +1,6 @@
 This project processes multiple JSON files containing board lists, combines them into a single JSON output, and includes metadata summarizing the results. It supports both CLI mode and Web mode.
-###Features
+
+### Features
 
     Combine Board Lists:
         Reads JSON files from a specified directory.
@@ -22,20 +23,20 @@ This project processes multiple JSON files containing board lists, combines them
         CLI Mode: Processes the data and outputs the JSON to the console.
         Web Mode: Exposes an HTTP endpoint to retrieve the JSON.
 
-###Requirement
+### Requirement
 
     Each JSON file contains an array of boards in a consistent structure.
     Invalid or missing JSON files are ignored.
     Sorting rules:
         Case-insensitive alphabetical sorting.
 
-###Prerequisites
+### Prerequisites
 
     Java 17+
     Maven 3.9+
     JSON files in the directory to process.
 
-###Packaging
+### Packaging
 
 To build the project:
 ```
@@ -43,7 +44,7 @@ To build the project:
 ```
 
 How to Run
-###CLI Mode
+### CLI Mode
 
 To execute the program in CLI mode and provide the directory of JSON files:
 
@@ -58,7 +59,7 @@ The CLI output will include:
     Combined JSON output.
     Metadata.
 
-###Web Mode
+### Web Mode
 
 To run the web service and expose an API:
 
