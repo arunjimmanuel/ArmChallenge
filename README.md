@@ -1,5 +1,5 @@
-This project processes multiple JSON files containing board lists, combines them into a single JSON output, and includes metadata summarizing the results. The project supports both CLI mode and Web mode.
-Features
+This project processes multiple JSON files containing board lists, combines them into a single JSON output, and includes metadata summarizing the results. It supports both CLI mode and Web mode.
+###Features
 
     Combine Board Lists:
         Reads JSON files from a specified directory.
@@ -22,46 +22,58 @@ Features
         CLI Mode: Processes the data and outputs the JSON to the console.
         Web Mode: Exposes an HTTP endpoint to retrieve the JSON.
 
-Assumptions
+###Requirement
 
     Each JSON file contains an array of boards in a consistent structure.
     Invalid or missing JSON files are ignored.
     Sorting rules:
         Case-insensitive alphabetical sorting.
 
-Prerequisites
+###Prerequisites
 
-```
     Java 17+
     Maven 3.9+
     JSON files in the directory to process.
+
+###Packaging
+
+To build the project:
+```
+	mvn clean package
 ```
 
 How to Run
-CLI Mode
+###CLI Mode
 
 To execute the program in CLI mode and provide the directory of JSON files:
 
 ```
-mvn spring-boot:run -Dspring-boot.run.arguments="--mode=cli --directory=/path/to/json/files"
-```
+	mvn spring-boot:run -Dspring-boot.run.arguments="--mode=cli --directory=/path/to/json/files"
 
+	java -jar <Jar File Name> --mode=cli --directory=/path/to/json/files
+
+```
 The CLI output will include:
 
     Combined JSON output.
     Metadata.
 
-Web Mode
+###Web Mode
 
 To run the web service and expose an API:
-```
-mvn spring-boot:run
-```
 
+```
+	mvn spring-boot:run
+
+	java -jar <Jar File Name>
+
+	curl -X POST http://localhost:9090/api/boards \
+     -d "directory=/path/to/directory"
+
+```
 The web service exposes the following endpoint:
 
-    GET /api/boards
-        Returns the combined JSON output, including the _metadata object.
+    POST /api/boards: Returns the combined JSON output, including the _metadata object.
 
 Output Example
 Combined JSON Output:
@@ -87,41 +99,4 @@ Combined JSON Output:
     "total_boards": 2
   }
 }
-
 ```
-
-Enhancements and Future Improvements
-
-    Error Handling:
-        Add better handling for malformed or invalid JSON files.
-        Log skipped files with detailed error messages.
-
-    Tests:
-        Include comprehensive unit and integration tests for both CLI and Web modes.
-
-    Performance:
-        Optimize for large JSON files or directories with numerous files.
-
-    Web Enhancements:
-        Add filtering and sorting options via query parameters (e.g., ?sort=vendor).
-        Implement pagination for large board lists.
-
-    Deployment:
-        Containerize the application using Docker.
-        Add CI/CD pipelines for automated builds and tests.
-
-Assumptions and Decisions
-
-    The directory is provided as a CLI argument or form parameter for web mode.
-    JSON files have a standard schema; deviations are ignored.
-    Default sorting is case-insensitive.
-
-
-Notes
-
-    In Web mode, access the API at 
-```
-curl -X POST http://localhost:8080/api/boards \
-     -d "directory=/path/to/directory"
-```
-
